@@ -48,19 +48,30 @@ const personSchema = new mongoose.Schema ({
 
 const Person = mongoose.model("Person", personSchema);
 
-const pineapple = new Fruit ({
-    name: "Pineapple",
-    score: 9,
-    review: "Great Fruit."
+const mango = new Fruit ({
+    name: "Mango",
+    score: 6,
+    review: "Okay Fruit."
 });
 
-// pineapple.save();
+mango.save();
 
-const person = new Person ({
-    name: "Amy",
-    age: 12,
-    favorateFruit: pineapple
+// const person = new Person ({
+//     name: "Amy",
+//     age: 12,
+//     favorateFruit: pineapple
+// });
+
+Person.updateOne({name: "John"}, {favorateFruit: mango}, function(err){
+    if (err){
+        console.log(err);
+    } else {
+        mongoose.connection.close();
+        console.log("Succeesfully Updated the Document");
+    }
 });
+
+
 
 
 
