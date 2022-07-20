@@ -42,20 +42,33 @@ const fruit = new Fruit ({
 
 const personSchema = new mongoose.Schema ({
     name: String,
-    age: Number
+    age: Number,
+    favorateFruit: fruitSchema
 });
 
 const Person = mongoose.model("Person", personSchema);
 
-const person = new Person ({
-    name: "John",
-    age: 37
+const pineapple = new Fruit ({
+    name: "Pineapple",
+    score: 9,
+    review: "Great Fruit."
 });
+
+// pineapple.save();
+
+const person = new Person ({
+    name: "Amy",
+    age: 12,
+    favorateFruit: pineapple
+});
+
+
 
 // Person.deleteMany({name: "John"}, function(err){
 //     if (err){
 //         console.log(err);
 //     } else {
+//         mongoose.connection.close();
 //         console.log("Successfully deleted all the document");
 //     }
 // });
